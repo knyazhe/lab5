@@ -1,8 +1,11 @@
 package model.enums;
 
 public enum DragonCharacter {
-    CUNNING,
-    CHAOTIC,
-    CHAOTIC_EVIL,
-    FICKLE;
+    CUNNING("CUNNING"),
+    CHAOTIC("CHAOTIC"),
+    CHAOTIC_EVIL("CHAOTIC_EVIL"),
+    FICKLE("FICKLE");
+
+    DragonCharacter(String s) {
+    }
 }

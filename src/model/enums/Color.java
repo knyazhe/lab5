@@ -1,7 +1,11 @@
 package model.enums;
 
 public enum Color {
-    BLUE,
-    ORANGE,
-    BROWN;
+    BLUE("BLUE"),
+    ORANGE("ORANGE"),
+    BROWN("BROWN");
+
+    Color(String s) {
+
+    }
 }

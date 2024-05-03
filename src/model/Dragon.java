@@ -2,7 +2,8 @@ package model;
 
 import model.enums.Color;
 import model.enums.DragonCharacter;
-import model.enums.DragonHead;
+
+import java.time.LocalDateTime;
 
 public class Dragon {
     private Long id; // $$$$ Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -14,6 +15,18 @@ public class Dragon {
     private Color color; //Поле не может быть null
     private DragonCharacter character; //Поле может быть null ####
     private DragonHead head;
+
+    public Dragon(int age, DragonCharacter character, Color color, Coordinates coordinates, LocalDateTime creationDate, DragonHead head, Long id, String name, Boolean speaking) {
+        this.age = age;
+        this.character = character;
+        this.color = color;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.head = head;
+        this.id = id;
+        this.name = name;
+        this.speaking = speaking;
+    }
 
     public void setAge(int age) {
         this.age = age;

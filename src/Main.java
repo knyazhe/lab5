@@ -1,23 +1,22 @@
 import model.Dragon;
-import model.Filler;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class Main {
-    static List<Dragon> dragons = new ArrayList<Dragon>();
 
     public static void main(String[] args) {
-        Object WeaponType;
-        Filler filler = new Filler();
-        Dragon gensek = new Dragon();
-        Dragon noname = new Dragon();
+//        CollectionManager collectionManager = new CollectionManager();
+//        CommandManager commandManager = new CommandManager();
+        LinkedList<Dragon> collection = new LinkedList<Dragon>();
 
-        filler.Fill(gensek);
-        filler.Fill(noname);
-        dragons.add(gensek);
-        dragons.add(noname);
 
-        for (var e : dragons) System.out.println(e);
+
+
+        Dragon gensek = DragonCreator.createDragon();
+        Dragon noname = DragonCreator.createDragon();
+        collection.add(gensek);
+        collection.add(noname);
+
+        for (var e : collection) System.out.println(e);
     }
 }
