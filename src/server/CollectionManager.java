@@ -1,4 +1,6 @@
-import model.Dragon;
+package server;
+
+import server.model.Dragon;
 
 import java.util.LinkedList;
 
@@ -6,7 +8,7 @@ public class CollectionManager {
     public CollectionManager() {
         LinkedList<Dragon> collection = new LinkedList<Dragon>();
 
-//        DragonCreator creator = new DragonCreator();
+//        server.DragonCreator creator = new server.DragonCreator();
 //        Dragon gensek = new Dragon();
 //        Dragon noname = new Dragon();
 //

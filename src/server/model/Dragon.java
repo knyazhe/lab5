@@ -1,7 +1,7 @@
-package model;
+package server.model;
 
-import model.enums.Color;
-import model.enums.DragonCharacter;
+import server.model.enums.Color;
+import server.model.enums.DragonCharacter;
 
 import java.time.LocalDateTime;
 

@@ -1,17 +1,29 @@
-package commands;
+package server.commands;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Command{
     private final String name;
     private final String description;
 
-    public Command(String description, String name) {
+    public Command( String name, String description) {
         this.description = description;
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Command{" +
+                "description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public void apply(){
+
+    }
+    public void apply(ArrayList<String> arguments){
 
     }
 

@@ -1,13 +1,16 @@
-import model.Coordinates;
-import model.Dragon;
-import model.DragonHead;
-import model.enums.Color;
-import model.enums.DragonCharacter;
+package server;
+
+import client.TerminalManager;
+import server.model.Coordinates;
+import server.model.Dragon;
+import server.model.DragonHead;
+import server.model.enums.Color;
+import server.model.enums.DragonCharacter;
 
 import java.util.Arrays;
 
 public class DragonCreator {
-    private static ConsoleManager console = new ConsoleManager();
+    private static TerminalManager console = new TerminalManager();
 
     public static Dragon createDragon() {
         String name = getNameFromUser();
@@ -23,14 +26,14 @@ public class DragonCreator {
 
     private static String getNameFromUser() {
         System.out.print("Enter the name: ");
-        return console.stdinln();
+        return console.stdinline();
     }
 
     private static int getAgeFromUser() {
         try {
             while (true) {
                 System.out.print("Enter the age: ");
-                String line = console.stdinln();
+                String line = console.stdinline();
                 int age = Integer.parseInt(line);
                 if (age > 0) {
                     return age;
@@ -49,7 +52,7 @@ public class DragonCreator {
             Double x, y;
             while (true) {
                 System.out.print("Enter x: ");
-                String line = console.stdinln();
+                String line = console.stdinline();
                 if (line.isEmpty()) {
                     //
                 }
@@ -60,7 +63,7 @@ public class DragonCreator {
             }
             while (true) {
                 System.out.print("Enter y: ");
-                String line = console.stdinln();
+                String line = console.stdinline();
                 if (line.isEmpty()) {
                     //
                 }
@@ -82,7 +85,7 @@ public class DragonCreator {
         try {
             while (true) {
                 System.out.print("Enter the speaking: ");
-                String line = console.stdinln();
+                String line = console.stdinline();
                 if (line.isEmpty() || line.equals("false")) {
                     break;
                 }
@@ -103,7 +106,7 @@ public class DragonCreator {
         DragonCharacter character = null;
         while (true) {
             System.out.print("Choose the character of dragon " + Arrays.toString(DragonCharacter.values()) + ": ");
-            String line = console.stdinln();
+            String line = console.stdinline();
             if (!line.isEmpty()){
                 try {
                     character = DragonCharacter.valueOf(line.toUpperCase());
@@ -119,7 +122,7 @@ public class DragonCreator {
         Color color = null;
         while (true) {
             System.out.print("Choose the color of dragon " + Arrays.toString(Color.values()) + ": ");
-            String line = console.stdinln();
+            String line = console.stdinline();
             try {
                 color = Color.valueOf(line.toUpperCase());
                 return color;
@@ -135,7 +138,7 @@ public class DragonCreator {
         try {
             while (true) {
                 System.out.print("Enter the tooth count: ");
-                String line = console.stdinln();
+                String line = console.stdinline();
                 toothCount = Long.parseLong(line);
                 if (toothCount >= 0) {
                     return toothCount;

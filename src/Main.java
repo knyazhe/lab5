@@ -1,22 +1,24 @@
-import model.Dragon;
+import client.TerminalManager;
+import server.CollectionManager;
+import server.CommandManager;
+import server.commands.Exit;
+import server.commands.Help;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
-//        CollectionManager collectionManager = new CollectionManager();
-//        CommandManager commandManager = new CommandManager();
-        LinkedList<Dragon> collection = new LinkedList<Dragon>();
+        CollectionManager collectionManager = new CollectionManager();
+        CommandManager commandManager = new CommandManager(
+                collectionManager,
+                new Exit("exit", "завершить программу (без сохранения в файл)"),
+                new Help("help", "вывести справку по доступным командам"));
+        TerminalManager console = new TerminalManager();
 
-
-
-
-        Dragon gensek = DragonCreator.createDragon();
-        Dragon noname = DragonCreator.createDragon();
-        collection.add(gensek);
-        collection.add(noname);
-
-        for (var e : collection) System.out.println(e);
+        while (true) {
+            ArrayList<String> input = console.stdinlist();
+            commandManager.processCommand(input);
+        }
     }
 }

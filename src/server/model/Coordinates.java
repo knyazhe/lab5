@@ -1,4 +1,4 @@
-package model;
+package server.model;
 
 public class Coordinates {
     private Double x; //Поле не может быть null
