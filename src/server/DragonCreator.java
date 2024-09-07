@@ -35,8 +35,9 @@ public class DragonCreator {
     }
 
     private static int getAgeFromUser() {
-        try {
-            while (true) {
+
+        while (true) {
+            try {
                 System.out.print("Enter the age: ");
                 String line = console.stdinline();
                 int age = Integer.parseInt(line);
@@ -45,11 +46,10 @@ public class DragonCreator {
                 } else {
                     System.out.println("[!] Invalid age");
                 }
+            } catch (Throwable e) {
+                System.out.println("[!] Invalid input");
             }
-        } catch (Throwable e) {
-            System.out.println("[!] Invalid input");
         }
-        return -1;
     }
 
     private static Coordinates getCoordinatesFromUser() {

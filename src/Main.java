@@ -4,6 +4,7 @@ import server.CommandManager;
 import server.commands.*;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Main {
 
@@ -21,12 +22,17 @@ public class Main {
         commandManager.addCommand(new Show("show", "show all elements in collection", collectionManager, terminalManager));
         commandManager.addCommand(new RemoveById("remove_by_id", "remove element by id", collectionManager));
         commandManager.addCommand(new Update("update", "update information of element by id", collectionManager));
-
-
-
+        commandManager.addCommand(new FilterContains("filter_contains_name", "filter elements by name contains string", collectionManager, terminalManager));
+        commandManager.addCommand(new FilterStarts("filter_starts_name", "filter elements by name starts from string", collectionManager, terminalManager));
+        commandManager.addCommand(new Info("info", "give info about collection", collectionManager));
         while (true) {
-            ArrayList<String> input = terminalManager.stdinlist();
-            commandManager.processCommand(input);
+            try {
+                ArrayList<String> input = terminalManager.stdinlist();
+                commandManager.processCommand(input);
+            }catch (NoSuchElementException e){
+                terminalManager.printText("just dont press ctrl+d");
+                terminalManager.skip();
+            }
         }
     }
 }

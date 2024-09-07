@@ -1,17 +1,18 @@
 package server;
 
 import server.model.Dragon;
+import server.model.MyCollection;
 
 import java.util.LinkedList;
 
 public class CollectionManager {
-    private LinkedList<Dragon> collection;
+    private MyCollection collection = new MyCollection();
     private static long id_counter = 1;
     public CollectionManager() {
-        collection = new LinkedList<Dragon>(); //Сделать generic на дюбой Object
+        collection = new MyCollection(); //Сделать generic на дюбой Object
     }
 
-    public LinkedList<Dragon> getCollection() {
+    public MyCollection getCollection() {
         return collection;
     }
 
@@ -19,7 +20,7 @@ public class CollectionManager {
         collection.clear();
     }
 
-    public void setCollection(LinkedList<Dragon> collection) {
+    public void setCollection(MyCollection collection) {
         this.collection = collection;
     }
 

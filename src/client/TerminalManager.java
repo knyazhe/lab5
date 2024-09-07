@@ -16,6 +16,11 @@ public class TerminalManager {
     private void enterString(){
         System.out.print("> ");
     }
+    public void skip(){
+        if (!sc.hasNext()){
+            sc.next();
+        }
+    }
     public String stdinline(){
         this.enterString();
         String line = sc.nextLine().toLowerCase().trim();
