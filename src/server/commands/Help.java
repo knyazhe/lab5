@@ -16,11 +16,11 @@ public class Help extends Command {
         System.out.printf(" %-35s%-1s%n", this.getName(), this.getDescription());
     }
 
-    public void addCommand(Command command) {
+    public void addCommandToHelp(Command command) {
         this.commands.add(command);
     }
 
-    public void removeCommand(Command command) {
+    public void removeCommandFromHelp(Command command) {
         this.commands.remove(command);
     }
 

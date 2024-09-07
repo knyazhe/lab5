@@ -52,6 +52,50 @@ public class Dragon {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public DragonCharacter getCharacter() {
+        return character;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public DragonHead getHead() {
+        return head;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Boolean getSpeaking() {
+        return speaking;
+    }
+
     public void setSpeaking(Boolean speaking) {
         this.speaking = speaking;
     }

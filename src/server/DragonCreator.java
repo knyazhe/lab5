@@ -9,8 +9,11 @@ import server.model.enums.DragonCharacter;
 
 import java.util.Arrays;
 
+// this class just creates Dragon class by asking user, validates user's data and returns Dragon class
+
 public class DragonCreator {
     private static TerminalManager console = new TerminalManager();
+    private static long id_counter = 1;
 
     public static Dragon createDragon() {
         String name = getNameFromUser();
@@ -20,7 +23,8 @@ public class DragonCreator {
         Color color = getColorFromUser();
         DragonCharacter character = getCharacterFromUser();
         DragonHead head = new DragonHead(getToothCountFromUser());
-
+//        id
+//        date
         return new Dragon(age, character, color, coordinates, null, head, null, name, speaking);
     }
 
@@ -38,11 +42,11 @@ public class DragonCreator {
                 if (age > 0) {
                     return age;
                 } else {
-                    System.out.println("Invalid age");
+                    System.out.println("[!] Invalid age");
                 }
             }
         } catch (Throwable e) {
-            System.out.println("Invalid input");
+            System.out.println("[!] Invalid input");
         }
         return -1;
     }
@@ -75,7 +79,7 @@ public class DragonCreator {
             Coordinates coordinates = new Coordinates(x, y);
             return coordinates;
         } catch (Throwable e) {
-            System.out.println("Invalid input");
+            System.out.println("[!] Invalid input");
         }
         return null;
     }
@@ -93,11 +97,11 @@ public class DragonCreator {
                     speaking = true;
                     break;
                 } else {
-                    System.out.println("Invalid speaking");
+                    System.out.println("[!] Invalid speaking");
                 }
             }
         } catch (Throwable e) {
-            System.out.println("Invalid input");
+            System.out.println("[!] Invalid input");
         }
         return speaking;
     }
@@ -112,7 +116,7 @@ public class DragonCreator {
                     character = DragonCharacter.valueOf(line.toUpperCase());
                     return character;
                 } catch (Throwable e) {
-                    System.out.println("Invalid character");
+                    System.out.println("[!] Invalid character");
                 }
             }
         }
@@ -127,7 +131,7 @@ public class DragonCreator {
                 color = Color.valueOf(line.toUpperCase());
                 return color;
             } catch (Throwable e) {
-                System.out.println("Invalid color");
+                System.out.println("[!] Invalid color");
             }
         }
     }
@@ -143,11 +147,11 @@ public class DragonCreator {
                 if (toothCount >= 0) {
                     return toothCount;
                 } else {
-                    System.out.println("Invalid tooth count");
+                    System.out.println("[!] Invalid tooth count");
                 }
             }
         } catch (Throwable e) {
-            System.out.println("Invalid input");
+            System.out.println("[!] Invalid input");
         }
         return -1L;
     }

@@ -5,18 +5,24 @@ import server.model.Dragon;
 import java.util.LinkedList;
 
 public class CollectionManager {
+    private LinkedList<Dragon> collection;
     public CollectionManager() {
-        LinkedList<Dragon> collection = new LinkedList<Dragon>();
+        collection = new LinkedList<Dragon>(); //Сделать generic на дюбой Object
+    }
 
-//        server.DragonCreator creator = new server.DragonCreator();
-//        Dragon gensek = new Dragon();
-//        Dragon noname = new Dragon();
-//
-//        creator.Fill(gensek);
-//        creator.Fill(noname);
-//        collection.add(gensek);
-//        collection.add(noname);
+    public LinkedList<Dragon> getCollection() {
+        return collection;
+    }
 
-        for (var e : collection) System.out.println(e);
+    public void clearCollection() {
+        collection.clear();
+    }
+
+    public void setCollection(LinkedList<Dragon> collection) {
+        this.collection = collection;
+    }
+
+    public void addDragon(Dragon dragon) {
+        collection.add(dragon);
     }
 }
