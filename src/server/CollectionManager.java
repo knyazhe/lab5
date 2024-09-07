@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 public class CollectionManager {
     private LinkedList<Dragon> collection;
+    private static long id_counter = 1;
     public CollectionManager() {
         collection = new LinkedList<Dragon>(); //Сделать generic на дюбой Object
     }
@@ -23,6 +24,7 @@ public class CollectionManager {
     }
 
     public void addDragon(Dragon dragon) {
+        dragon.setId(id_counter++);
         collection.add(dragon);
     }
 }

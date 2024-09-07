@@ -6,6 +6,7 @@ import server.model.Dragon;
 import server.model.DragonHead;
 import server.model.enums.Color;
 import server.model.enums.DragonCharacter;
+import java.time.LocalDateTime;
 
 import java.util.Arrays;
 
@@ -13,7 +14,7 @@ import java.util.Arrays;
 
 public class DragonCreator {
     private static TerminalManager console = new TerminalManager();
-    private static long id_counter = 1;
+
 
     public static Dragon createDragon() {
         String name = getNameFromUser();
@@ -23,9 +24,9 @@ public class DragonCreator {
         Color color = getColorFromUser();
         DragonCharacter character = getCharacterFromUser();
         DragonHead head = new DragonHead(getToothCountFromUser());
-//        id
-//        date
-        return new Dragon(age, character, color, coordinates, null, head, null, name, speaking);
+//        id is will be created in collectionmanager
+        java.time.LocalDateTime creationDate = LocalDateTime.now();
+        return new Dragon(age, character, color, coordinates, creationDate, head, null, name, speaking);
     }
 
     private static String getNameFromUser() {

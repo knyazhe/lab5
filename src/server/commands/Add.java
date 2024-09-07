@@ -7,18 +7,16 @@ import server.model.Dragon;
 import java.util.ArrayList;
 
 public class Add extends Command {
-    private final DragonCreator dragonCreator;
     private final CollectionManager collectionManager;
 
     public Add(String name, String description, CollectionManager collectionManager) {
         super(name, description);
-        this.dragonCreator = new DragonCreator();
         this.collectionManager = collectionManager;
     }
 
     @Override
     public void apply(ArrayList<String> arguments) {
-        Dragon dragon = this.dragonCreator.createDragon();
+        Dragon dragon = DragonCreator.createDragon();
         this.collectionManager.addDragon(dragon);
     }
 

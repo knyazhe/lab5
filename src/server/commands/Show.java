@@ -21,7 +21,7 @@ public class Show extends Command {
     public void apply(ArrayList<String> arguments) {
         LinkedList<Dragon> collection = collectionManager.getCollection();
         if (collection.isEmpty()) {
-            terminalManager.printText("Collection is empty.");
+            terminalManager.printText("[i] Collection is empty.");
         } else {
             for (Dragon dragon : collection) {
                 terminalManager.printText(dragon);
