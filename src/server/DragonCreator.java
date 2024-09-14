@@ -13,7 +13,7 @@ import java.util.Arrays;
 // this class just creates Dragon class by asking user, validates user's data and returns Dragon class
 
 public class DragonCreator {
-    private static TerminalManager console = new TerminalManager();
+    private static final TerminalManager terminalManager = new TerminalManager();
 
 
     public static Dragon createDragon() {
@@ -30,24 +30,23 @@ public class DragonCreator {
     }
 
     private static String getNameFromUser() {
-        System.out.print("Enter the name: ");
-        return console.stdinline();
+        terminalManager.printText("Enter the name: ");
+        return terminalManager.stdinline();
     }
 
     private static int getAgeFromUser() {
-
         while (true) {
             try {
-                System.out.print("Enter the age: ");
-                String line = console.stdinline();
+                terminalManager.printText("Enter the age: ");
+                String line = terminalManager.stdinline();
                 int age = Integer.parseInt(line);
                 if (age > 0) {
                     return age;
                 } else {
-                    System.out.println("[!] Invalid age");
+                    terminalManager.printText("[!] Invalid age");
                 }
             } catch (Throwable e) {
-                System.out.println("[!] Invalid input");
+                terminalManager.printText("[!] Invalid input");
             }
         }
     }
@@ -56,31 +55,24 @@ public class DragonCreator {
         try {
             Double x, y;
             while (true) {
-                System.out.print("Enter x: ");
-                String line = console.stdinline();
-                if (line.isEmpty()) {
-                    //
-                }
+                terminalManager.printText("Enter x coordinate: ");
+                String line = terminalManager.stdinline();
                 if (!line.isEmpty()) {
                     x = Double.parseDouble(line);
                     break;
                 }
             }
             while (true) {
-                System.out.print("Enter y: ");
-                String line = console.stdinline();
-                if (line.isEmpty()) {
-                    //
-                }
+                terminalManager.printText("Enter y coordinate: ");
+                String line = terminalManager.stdinline();
                 if (!line.isEmpty()) {
                     y = Double.parseDouble(line);
                     break;
                 }
             }
-            Coordinates coordinates = new Coordinates(x, y);
-            return coordinates;
+            return new Coordinates(x, y);
         } catch (Throwable e) {
-            System.out.println("[!] Invalid input");
+            terminalManager.printText("[!] Invalid input");
         }
         return null;
     }
@@ -89,8 +81,8 @@ public class DragonCreator {
         boolean speaking = false;
         try {
             while (true) {
-                System.out.print("Enter the speaking: ");
-                String line = console.stdinline();
+                terminalManager.printText("Enter the speaking: ");
+                String line = terminalManager.stdinline();
                 if (line.isEmpty() || line.equals("false")) {
                     break;
                 }
@@ -98,11 +90,11 @@ public class DragonCreator {
                     speaking = true;
                     break;
                 } else {
-                    System.out.println("[!] Invalid speaking");
+                    terminalManager.printText("[!] Invalid speaking");
                 }
             }
         } catch (Throwable e) {
-            System.out.println("[!] Invalid input");
+            terminalManager.printText("[!] Invalid input");
         }
         return speaking;
     }
@@ -110,14 +102,14 @@ public class DragonCreator {
     private static DragonCharacter getCharacterFromUser() {
         DragonCharacter character = null;
         while (true) {
-            System.out.print("Choose the character of dragon " + Arrays.toString(DragonCharacter.values()) + ": ");
-            String line = console.stdinline();
+            terminalManager.printText("Choose the character of dragon " + Arrays.toString(DragonCharacter.values()) + ": ");
+            String line = terminalManager.stdinline();
             if (!line.isEmpty()){
                 try {
                     character = DragonCharacter.valueOf(line.toUpperCase());
                     return character;
                 } catch (Throwable e) {
-                    System.out.println("[!] Invalid character");
+                    terminalManager.printText("[!] Invalid character");
                 }
             }
         }
@@ -126,13 +118,13 @@ public class DragonCreator {
     private static Color getColorFromUser() {
         Color color = null;
         while (true) {
-            System.out.print("Choose the color of dragon " + Arrays.toString(Color.values()) + ": ");
-            String line = console.stdinline();
+            terminalManager.printText("Choose the color of dragon " + Arrays.toString(Color.values()) + ": ");
+            String line = terminalManager.stdinline();
             try {
                 color = Color.valueOf(line.toUpperCase());
                 return color;
             } catch (Throwable e) {
-                System.out.println("[!] Invalid color");
+                terminalManager.printText("[!] Invalid color");
             }
         }
     }
@@ -142,17 +134,17 @@ public class DragonCreator {
         Long toothCount = null;
         try {
             while (true) {
-                System.out.print("Enter the tooth count: ");
-                String line = console.stdinline();
+                terminalManager.printText("Enter the tooth count: ");
+                String line = terminalManager.stdinline();
                 toothCount = Long.parseLong(line);
                 if (toothCount >= 0) {
                     return toothCount;
                 } else {
-                    System.out.println("[!] Invalid tooth count");
+                    terminalManager.printText("[!] Invalid tooth count");
                 }
             }
         } catch (Throwable e) {
-            System.out.println("[!] Invalid input");
+            terminalManager.printText("[!] Invalid input");
         }
         return -1L;
     }

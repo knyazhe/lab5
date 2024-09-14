@@ -10,8 +10,8 @@ import java.util.LinkedList;
 public class RemoveById extends Command {
     private final TerminalManager tm = new TerminalManager();
     private final CollectionManager collectionManager;
-    public RemoveById(String name, String description, CollectionManager collectionManager) {
-        super(name, description);
+    public RemoveById(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
     }
 
@@ -27,10 +27,40 @@ public class RemoveById extends Command {
         LinkedList<Dragon> collection = collectionManager.getCollection();
         for (Dragon dragon: collection){
             if (dragon.getId().equals(id)){
-                collection.remove(dragon);
+                collectionManager.removeDragon(dragon);
                 return;
             }
         }
         tm.printText("[!] Could not find dragon with id " + id + '.');
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int getAmountOfArguments() {
+        return super.getAmountOfArguments();
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription();
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

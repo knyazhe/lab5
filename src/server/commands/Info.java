@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Info extends Command{
     private final CollectionManager collectionManager;
-    private TerminalManager terminalManager = new TerminalManager();
-    public Info(String name, String description, CollectionManager collectionManager) {
-        super(name, description);
+    private final TerminalManager terminalManager = new TerminalManager();
+    public Info(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
     }
 

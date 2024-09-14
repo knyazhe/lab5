@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class FilterContains extends Command {
-    CollectionManager collectionManager;
-    TerminalManager terminalManager;
-    public FilterContains(String name, String description, CollectionManager collectionManager, TerminalManager terminalManager) {
-        super(name, description);
+    private final CollectionManager collectionManager;
+    private final TerminalManager terminalManager = new TerminalManager();
+    public FilterContains(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
-        this.terminalManager = terminalManager;
     }
 
     @Override
@@ -30,7 +29,7 @@ public class FilterContains extends Command {
             terminalManager.printText("[i] Collection is empty.");
         } else {
             for (Dragon dragon : collection) {
-                if (dragon.getName().startsWith(str)) {
+                if (dragon.getName().contains(str)) {
                     terminalManager.printText(dragon);
                 }
             }

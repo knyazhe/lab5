@@ -3,31 +3,25 @@ package server.commands;
 import client.TerminalManager;
 import server.CollectionManager;
 import server.model.Dragon;
+import server.model.MyCollection;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Show extends Command {
-    CollectionManager collectionManager;
-    TerminalManager terminalManager;
-    public Show(String name, String description, CollectionManager collectionManager, TerminalManager terminalManager) {
-        super(name, description);
+    private final CollectionManager collectionManager;
+    private final TerminalManager terminalManager = new TerminalManager();
+    public Show(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
-        this.terminalManager = terminalManager;
     }
 
     @Override
     public void apply(ArrayList<String> arguments) {
-        LinkedList<Dragon> collection = collectionManager.getCollection();
-        if (collection.isEmpty()) {
-            terminalManager.printText("[i] Collection is empty.");
-        } else {
-            for (Dragon dragon : collection) {
-                terminalManager.printText(dragon);
-            }
-        }
+        MyCollection collection = collectionManager.getCollection();
+        terminalManager.printCollection(collection);
     }
+
 
     @Override
     public String toString() {

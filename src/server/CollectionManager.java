@@ -3,6 +3,7 @@ package server;
 import server.model.Dragon;
 import server.model.MyCollection;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class CollectionManager {
@@ -16,6 +17,10 @@ public class CollectionManager {
         return collection;
     }
 
+    public void setMyCollection(MyCollection collection) {
+        this.collection = collection;
+    }
+
     public void clearCollection() {
         collection.clear();
     }
@@ -27,5 +32,14 @@ public class CollectionManager {
     public void addDragon(Dragon dragon) {
         dragon.setId(id_counter++);
         collection.add(dragon);
+    }
+    public void removeDragon(Dragon dragon) {
+        collection.remove(dragon);
+    }
+    public MyCollection sortDragons(Comparator<Dragon> comparator) {
+        MyCollection sortedCollection = new MyCollection();
+        sortedCollection = (MyCollection) collection.clone();
+        sortedCollection.sort(comparator);
+        return sortedCollection;
     }
 }

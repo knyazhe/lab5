@@ -3,6 +3,7 @@ package server.model;
 import server.model.enums.Color;
 import server.model.enums.DragonCharacter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Dragon {

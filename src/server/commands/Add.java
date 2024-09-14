@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Add extends Command {
     private final CollectionManager collectionManager;
 
-    public Add(String name, String description, CollectionManager collectionManager) {
-        super(name, description);
+    public Add(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
     }
 

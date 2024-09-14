@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Update extends Command {
-    private final TerminalManager tm = new TerminalManager();
+    private final TerminalManager terminalManager = new TerminalManager();
     private final CollectionManager collectionManager;
-    public Update(String name, String description, CollectionManager collectionManager) {
-        super(name, description);
+    public Update(String name, String description, int amountOfArguments, CollectionManager collectionManager) {
+        super(name, description, amountOfArguments);
         this.collectionManager = collectionManager;
     }
     @Override
@@ -21,7 +21,7 @@ public class Update extends Command {
         try {
             id = Long.parseLong(arguments.get(0));
         }catch (Throwable e){
-            tm.printText("[!] Not enough arguments!");
+            terminalManager.printText("[!] Not enough arguments!");
             return;
         }
         LinkedList<Dragon> collection = collectionManager.getCollection();
@@ -34,6 +34,6 @@ public class Update extends Command {
                 return;
             }
         }
-        tm.printText("[!] Could not find dragon with id " + id + '.');
+        terminalManager.printText("[!] Could not find dragon with id " + id + '.');
     }
 }

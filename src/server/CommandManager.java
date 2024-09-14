@@ -32,18 +32,23 @@ public class CommandManager {
         this.commands.remove(command.getName());
         this.help.removeCommandFromHelp(command);
     }
-    public void processCommand(ArrayList<String> str_from_user){
-        if (this.commands.containsKey(str_from_user.get(0))) {
-            Command user_command = this.commands.get(str_from_user.get(0));
-            str_from_user.remove(0);
+    public void processCommand(ArrayList<String> strFromUser){
+        String command = strFromUser.remove(0);
+        ArrayList<String> argue = strFromUser;
+        if (this.commands.containsKey(command)) {
+            Command userCommand = this.commands.get(command);
             try {
-                user_command.apply(str_from_user);
+                if (userCommand.getAmountOfArguments() == argue.size()) {
+                    userCommand.apply(argue);
+                } else {
+                    terminalManager.printText("[!] Wrong arguments " + argue.size() + " instead of " + userCommand.getAmountOfArguments());
+                }
             }
             catch (Throwable e){
-                terminalManager.printText("ERROR: Command " + str_from_user.get(0) + " could not be applied.");
+                terminalManager.printText("ERROR: Command " + command + " could not be applied. \n"+ e);
             }
 
-        }else if (str_from_user.get(0).equals("help")) {
+        }else if (command.equals("help")) {
             this.help.apply();
         }else{
             terminalManager.printText("[!] Command not found. Write 'help' to find out the list of available commands.");

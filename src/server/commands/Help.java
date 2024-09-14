@@ -1,19 +1,23 @@
 package server.commands;
 
+import client.TerminalManager;
+
 import java.util.ArrayList;
 
 public class Help extends Command {
+    private final TerminalManager terminalManager = new TerminalManager();
     ArrayList<Command> commands = new ArrayList<Command>();
-    public Help(String name, String description) {
-        super(name, description);
+
+    public Help(String name, String description, int amountOfArguments) {
+        super(name, description, amountOfArguments);
     }
 
     @Override
     public void apply() {
         for (Command c : commands) {
-            System.out.printf(" %-35s%-1s%n", c.getName(), c.getDescription());
+            terminalManager.printTable(c.getName(), c.getDescription());
         }
-        System.out.printf(" %-35s%-1s%n", this.getName(), this.getDescription());
+        terminalManager.printTable(this.getName(), this.getDescription());
     }
 
     public void addCommandToHelp(Command command) {

@@ -1,6 +1,8 @@
 package client;
 
 import server.commands.Exit;
+import server.model.Dragon;
+import server.model.MyCollection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Scanner;
 
 public class TerminalManager {
     private static final Scanner sc = new Scanner(System.in);
-    private static final Exit exit = new Exit("exit", "exit");
+    private static final Exit exit = new Exit("exit", "exit", 0);
 
 
     private void enterString(){
@@ -26,36 +28,28 @@ public class TerminalManager {
         String line = sc.nextLine().toLowerCase().trim();
         if (line.equals("exit")){
             exit.apply();
-            System.exit(0);
         }
         return line;
     }
     public ArrayList<String> stdinlist(){
         this.enterString();
-        String tmp = sc.nextLine().toLowerCase().replaceAll("\\s+", " ").trim();
-        ArrayList<String> line = new ArrayList<String>(List.of(tmp.split(" ")));
-        return line;
+        return new ArrayList<String>(List.of(sc.nextLine().toLowerCase().trim().split(" ")));
     }
-    public int stdinint() {
-        this.enterString();
-        String line = sc.nextLine().toLowerCase().trim();
-        if (new Scanner(line).next().equals("exit")) {
-            exit.apply();
-            System.exit(0);
-        }
-        int tmp2 = 0;
-        try {
-            tmp2 = Integer.parseInt(line);
-        } catch (NumberFormatException e) {
-            System.out.println("[Error] No such number!");
-        }
 
-        return tmp2;
-    }
     public void printTable(Object elementLeft, Object elementRight) {
         System.out.printf(" %-35s%-1s%n", elementLeft, elementRight);
     }
     public void printText(Object text) {
         System.out.println(text.toString());
+    }
+
+    public void printCollection(MyCollection collection){
+        if (collection.isEmpty()) {
+            this.printText("[i] Collection is empty.");
+        } else {
+            for (Dragon dragon : collection) {
+                this.printText(dragon);
+            }
+        }
     }
 }

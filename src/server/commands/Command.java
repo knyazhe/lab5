@@ -6,24 +6,23 @@ import java.util.Objects;
 public abstract class Command{
     private final String name;
     private final String description;
+    private final int amountOfArguments;
 
-    public Command( String name, String description) {
+    public Command( String name, String description, int amountOfArguments ) {
         this.description = description;
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Command{" +
-                "description='" + description + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        this.amountOfArguments = amountOfArguments;
     }
 
     public void apply(){
 
     }
+
     public void apply(ArrayList<String> arguments){
+
+    }
+
+    public void apply(ArrayList<String> arguments, int recursionLevel){
 
     }
 
@@ -33,6 +32,18 @@ public abstract class Command{
 
     public String getName() {
         return name;
+    }
+
+    public int getAmountOfArguments() {
+        return amountOfArguments;
+    }
+
+    @Override
+    public String toString() {
+        return "Command{" +
+                "description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
