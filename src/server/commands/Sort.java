@@ -1,10 +1,8 @@
 package server.commands;
 
 import server.CollectionManager;
-import server.model.Dragon;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Sort extends Command{
     private final CollectionManager collectionManager;

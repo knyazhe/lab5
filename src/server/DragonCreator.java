@@ -6,9 +6,10 @@ import server.model.Dragon;
 import server.model.DragonHead;
 import server.model.enums.Color;
 import server.model.enums.DragonCharacter;
-import java.time.LocalDateTime;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Scanner;
 
 // this class just creates Dragon class by asking user, validates user's data and returns Dragon class
 
@@ -24,7 +25,7 @@ public class DragonCreator {
         Color color = getColorFromUser();
         DragonCharacter character = getCharacterFromUser();
         DragonHead head = new DragonHead(getToothCountFromUser());
-//        id is will be created in collectionmanager
+
         java.time.LocalDateTime creationDate = LocalDateTime.now();
         return new Dragon(age, character, color, coordinates, creationDate, head, null, name, speaking);
     }
@@ -52,12 +53,13 @@ public class DragonCreator {
     }
 
     private static Coordinates getCoordinatesFromUser() {
+
         try {
             Double x, y;
             while (true) {
                 terminalManager.printText("Enter x coordinate: ");
                 String line = terminalManager.stdinline();
-                if (!line.isEmpty()) {
+                if (!line.isEmpty() && new Scanner(line).hasNextDouble()) {
                     x = Double.parseDouble(line);
                     break;
                 }
@@ -65,7 +67,7 @@ public class DragonCreator {
             while (true) {
                 terminalManager.printText("Enter y coordinate: ");
                 String line = terminalManager.stdinline();
-                if (!line.isEmpty()) {
+                if (!line.isEmpty() && new Scanner(line).hasNextDouble()) {
                     y = Double.parseDouble(line);
                     break;
                 }
@@ -81,7 +83,7 @@ public class DragonCreator {
         boolean speaking = false;
         try {
             while (true) {
-                terminalManager.printText("Enter the speaking: ");
+                terminalManager.printText("Enter the speaking (true/false): ");
                 String line = terminalManager.stdinline();
                 if (line.isEmpty() || line.equals("false")) {
                     break;
@@ -104,7 +106,7 @@ public class DragonCreator {
         while (true) {
             terminalManager.printText("Choose the character of dragon " + Arrays.toString(DragonCharacter.values()) + ": ");
             String line = terminalManager.stdinline();
-            if (!line.isEmpty()){
+            if (!line.isEmpty()) {
                 try {
                     character = DragonCharacter.valueOf(line.toUpperCase());
                     return character;
@@ -136,12 +138,17 @@ public class DragonCreator {
             while (true) {
                 terminalManager.printText("Enter the tooth count: ");
                 String line = terminalManager.stdinline();
-                toothCount = Long.parseLong(line);
-                if (toothCount >= 0) {
-                    return toothCount;
+                if (new Scanner(line).hasNextLong() && !line.isEmpty()) {
+                    toothCount = Long.parseLong(line);
+                    if (toothCount >= 0) {
+                        return toothCount;
+                    } else {
+                        terminalManager.printText("[!] Invalid tooth count");
+                    }
                 } else {
-                    terminalManager.printText("[!] Invalid tooth count");
+                    return null;
                 }
+
             }
         } catch (Throwable e) {
             terminalManager.printText("[!] Invalid input");

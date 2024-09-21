@@ -1,10 +1,13 @@
 package server.model;
 
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
+import client.typeadapters.LocalDateTimeTypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+
 import java.util.LinkedList;
 
 public class MyCollection extends LinkedList<Dragon> {
+
+    @JsonAdapter(LocalDateTimeTypeAdapter.class)
     private final java.time.LocalDateTime initializationDate;
 
     public MyCollection() {

@@ -4,7 +4,6 @@ import client.TerminalManager;
 import server.CollectionManager;
 import server.DragonCreator;
 import server.model.Dragon;
-import server.model.MyCollection;
 
 import java.util.ArrayList;
 

@@ -1,24 +1,25 @@
 package server;
 
+import client.JsonManager;
 import server.model.Dragon;
 import server.model.MyCollection;
 
 import java.util.Comparator;
-import java.util.LinkedList;
 
 public class CollectionManager {
-    private MyCollection collection = new MyCollection();
-    private static long id_counter = 1;
+    private MyCollection collection;
+    private long id_counter;
     public CollectionManager() {
-        collection = new MyCollection(); //Сделать generic на дюбой Object
+        MyCollection coll = JsonManager.loadFromJson();
+        if (coll!=null){
+            collection = coll;
+        }else{
+            collection = new MyCollection();
+        }
     }
 
     public MyCollection getCollection() {
         return collection;
-    }
-
-    public void setMyCollection(MyCollection collection) {
-        this.collection = collection;
     }
 
     public void clearCollection() {
@@ -30,15 +31,15 @@ public class CollectionManager {
     }
 
     public void addDragon(Dragon dragon) {
-        dragon.setId(id_counter++);
+        dragon.setId((long) collection.size());
         collection.add(dragon);
     }
     public void removeDragon(Dragon dragon) {
         collection.remove(dragon);
     }
+
     public MyCollection sortDragons(Comparator<Dragon> comparator) {
-        MyCollection sortedCollection = new MyCollection();
-        sortedCollection = (MyCollection) collection.clone();
+        MyCollection sortedCollection = (MyCollection) collection.clone();
         sortedCollection.sort(comparator);
         return sortedCollection;
     }

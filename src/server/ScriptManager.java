@@ -25,11 +25,11 @@ public class ScriptManager {
                        Objects.equals(line.get(0), executeCommand.getName())
                       )
             {
-                if (recursionLevel<=3) {
+                if (recursionLevel<228) {
                     ArrayList<String> arrayLine = new ArrayList<String>(line);
                     this.executeCommand.apply(arrayLine, recursionLevel+1);
                 } else {
-                    terminalManager.printText("[i] Maximum recursion level is 3");
+                    terminalManager.printText("[i] Maximum recursion level is 228");
                 }
 
             } else {

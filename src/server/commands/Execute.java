@@ -1,13 +1,10 @@
 package server.commands;
 
-import client.ScriptReader;
 import client.TerminalManager;
-import server.CollectionManager;
 import server.CommandManager;
 import server.ScriptManager;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Execute extends Command {
     private final TerminalManager terminalManager = new TerminalManager();

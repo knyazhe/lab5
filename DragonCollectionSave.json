@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "name": "name",
+    "coordinates": {
+      "x": 4.0,
+      "y": 4.0
+    },
+    "creationDate": "20::Sept::2024 13::20::33",
+    "age": 4,
+    "speaking": true,
+    "color": "BLUE",
+    "character": "CHAOTIC",
+    "head": {
+      "toothCount": 5
+    }
+  }
+]

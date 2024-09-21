@@ -2,7 +2,6 @@ package server.commands;
 
 import client.TerminalManager;
 import server.CollectionManager;
-import server.model.Dragon;
 import server.model.MyCollection;
 
 
